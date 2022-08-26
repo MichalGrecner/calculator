@@ -10,25 +10,35 @@ buttons.forEach(function (btn){
             if(typeof num ==="undefined"){
                 num = String(btn.innerHTML)
                 display(num)
-            }else{
+            }
+            else if (num.includes(".") &&  btn.getAttribute("class").includes("decSep")){
+                //pass
+            }
+            else{
                 num += String(btn.innerHTML);
                 display(num)
             }
             
         }else if(btn.getAttribute("class").includes("operator")){
             if( operation === undefined){
-            operation = btn.innerHTML;
-            display(operation)
+                operation = btn.innerHTML;
+                display(operation)
             } else {
                 operationMemory = btn.innerHTML;
                 display(operationMemory)
             }
-            memory.push(parseInt(num));
+            memory.push(
+                Number(num));
             num = undefined;
             if(memory.length == 2){
                 console.log("count " + operation)
                 count()
             }
+        } else {
+            //CLEAR function
+            memory = [];
+            num = operation = operationMemory = undefined
+            display(" ")
         }
 
         
@@ -41,14 +51,19 @@ buttons.forEach(function (btn){
 )
 
 function count(){
+
+    console.log("fce count - memory0: "+ memory[0])
+    console.log("fce count - memory1: "+ memory[1])
+    console.log("fce count - memory0type of: "+ typeof memory[0])
+    console.log("fce count - memory1type of: "+ typeof memory[1])
    
     const operations = {
         "+": memory[0] + memory[1],
         "-": memory[0] - memory[1],
-        "X": memory[0] * memory[1],
+        "x": memory[0] * memory[1],
         "/": memory[0] / memory[1],
-        "x&#178": memory[0] ** memory[1],
-        "&#178&#8730x": Math.pow(memory[1], 1/memory[0]),
+        "<var>x<sup>y</sup></var>": memory[0] ** memory[1],
+        "<var><sup>y</sup></var>√x": Math.pow(memory[1], 1/memory[0]),
     }
     
     console.log("Výsledek: "+ operations[operation])
@@ -66,7 +81,7 @@ function display(value){
     dispNum.innerHTML = value;
 }
 
-//TODO: CL, =, x^2, x root y, change symbols on buttons
+//TODO: diplay graphic + max nm of digits on display, numbers with decimal point, allow only one decimal point
 
 
 
