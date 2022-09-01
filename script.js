@@ -39,10 +39,16 @@ buttons.forEach(function (btn){
                 display(num)
             }
             if(btn.getAttribute("class").includes("equal")){
-                //manage when =
-            }
-
-            else if( operation === undefined){
+                if(memory.length === 2){
+                    console.log("EQUAL IF")
+                    console.log(memory.length)
+                    
+                } else{
+                    console.log("EQUAL ELSE")
+                    console.log(memory.length)
+                   
+                }
+            }else if( operation === undefined){
                 operation = btn.innerHTML;
                 tagButton(btn) 
             
@@ -50,9 +56,8 @@ buttons.forEach(function (btn){
                 operationMemory = btn.innerHTML;
                 tagButton(btn)
             }
-            
-            memory.push(
-                Number(num));
+            console.log("memory.push")
+            memory.push(Number(num));
             num = undefined;
             if(memory.length == 2){
                 console.log("count " + operation)
@@ -116,7 +121,6 @@ function tagButton(btn){
 // 2. Long decimal numbers precision
 // 3. graphics display 
 // 4. negative number
-
 
 
 
