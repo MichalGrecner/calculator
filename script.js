@@ -6,6 +6,7 @@ let canOperate = false;
 
 
 const buttons = document.querySelectorAll(".btn");
+
 buttons.forEach(function (btn){
     btn.addEventListener("click", () => {
         //resets CSS styles of operator buttons
@@ -15,7 +16,7 @@ buttons.forEach(function (btn){
             }
         })
         
-        console.log("can Operate: "+canOperate)
+        
         if( btn.getAttribute("class").includes("num")){
             canOperate = true;
             if(typeof num ==="undefined"){
@@ -32,20 +33,47 @@ buttons.forEach(function (btn){
                 
             }
             
-        }else if(btn.getAttribute("class").includes("operator")&& canOperate === true){
+        } else if(btn.getAttribute("class").includes("plusMinus")){
+            num = Number(num) * -1
+            display(num)
+            console.log("memory.push v if else +-")
+            memory.push(Number(num));
+            num = undefined;
+
+        }
+        
+        
+        
+        
+        else if(btn.getAttribute("class").includes("operator")&& canOperate === true){
+            console.log("zmackunty operator")
             canOperate = false;
-            if(btn.getAttribute("class").includes("plusMinus")){
-                num = Number(num) * -1
-                display(num)
+            
+            // if(btn.getAttribute("class").includes("plusMinus")){
+            //     num = Number(num) * -1
+            //     display(num)
+                
+            // }
+            console.log("num pred ifem: "+ Number(num))
+            if(num!=undefined){
+                console.log("memory.push")
+                memory.push(Number(num));
+                num = undefined;
             }
+
+
             if(btn.getAttribute("class").includes("equal")){
                 if(memory.length === 2){
+                    
                     console.log("EQUAL IF")
-                    console.log(memory.length)
+                    console.log("mmeory length: " + memory.length)
+                    count()
+                    operation = undefined
+                    canOperate = true
                     
                 } else{
                     console.log("EQUAL ELSE")
-                    console.log(memory.length)
+                    console.log("memory length: " + memory.length)
                    
                 }
             }else if( operation === undefined){
@@ -56,12 +84,13 @@ buttons.forEach(function (btn){
                 operationMemory = btn.innerHTML;
                 tagButton(btn)
             }
-            console.log("memory.push")
-            memory.push(Number(num));
-            num = undefined;
+            // console.log("memory.push")
+            // memory.push(Number(num));
+            // num = undefined;
             if(memory.length == 2){
                 console.log("count " + operation)
                 count()
+                console.log("vypíše se???")
             }
         } else if (btn.getAttribute("class").includes("clear")){
             //CLEAR function
@@ -98,6 +127,7 @@ function count(){
     memory[0]=(operations[operation])
     memory.pop()
     operation = operationMemory;
+    operationMemory = undefined
 }
 
 
