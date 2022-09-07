@@ -28,9 +28,10 @@ buttons.forEach(function (btn){
                 //pass
             }
             else{
-                num += String(btn.innerHTML);
-                display(num)
-                
+                if(num.length < 14){
+                    num += String(btn.innerHTML);
+                    display(num)
+                }
             }
             
         } else if(btn.getAttribute("class").includes("plusMinus")){
@@ -98,9 +99,6 @@ buttons.forEach(function (btn){
             num = operation = operationMemory = undefined
             display(" ")
         }
-
-        
-      
     })
 }
 )
@@ -112,7 +110,7 @@ function count(){
    
     console.log("fce count - operation: " + operation)
     console.log("fce count - operationMemory: " + operationMemory)
-   
+    
     const operations = {
         "+": memory[0] + memory[1],
         "-": memory[0] - memory[1],
@@ -121,10 +119,10 @@ function count(){
         "<var>x<sup>y</sup></var>": memory[0] ** memory[1],
         "<var><sup>y</sup></var>√x": Math.pow(memory[1], 1/memory[0]),
     }
-    
-    console.log("Výsledek: "+ operations[operation])
-    display(operations[operation])
-    memory[0]=(operations[operation])
+    let result = operations[operation]
+    console.log("Výsledek: "+ result)
+    display(result)
+    memory[0]=(result)
     memory.pop()
     operation = operationMemory;
     operationMemory = undefined

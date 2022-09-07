@@ -12,34 +12,48 @@ main{
     justify-content: flex-end;
     width:450px;
     height:650px;
-   
     border-radius: 10px;
     background-color: rgb(231, 226, 226);
-    
 }
 
 .display{
+    display:flex;
     width:340px;
     height:100px;
     border:6px solid black;
     margin-bottom: 30px;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: rgb(185, 208, 145)
-
+    background-color: rgb(185, 208, 145);
+    justify-content: right;
+    align-items: flex-end;
+}
+.dispValue{
+    font-size: 40px;
 }
 
 .num{
     background-color:rgb(197, 195, 193) ;
+}
+.num:hover{
+    background-color:rgb(148, 147, 145) ;
 }
 
 
 .clear{
     background-color: rgb(219, 110, 110);
 }
+.clear:hover{
+background-color: rgb(245, 42, 42);
+
+}
 .operator{
     background-color: rgb(240, 160, 84);
 }
+.operator:hover{
+    background-color: rgb(214, 128, 48);
+}
+
 
 .row{
     display:flex;
@@ -57,6 +71,9 @@ main{
     justify-content: center; 
     box-sizing: border-box;
 }
+
+
+
 .fiveRow{
     margin-bottom: 30px;
 }
