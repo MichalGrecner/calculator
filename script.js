@@ -115,11 +115,12 @@ function count(){
         "+": memory[0] + memory[1],
         "-": memory[0] - memory[1],
         "x": memory[0] * memory[1],
+        //"/": memory[0] / memory[1],
         "/": memory[0] / memory[1],
         "<var>x<sup>y</sup></var>": memory[0] ** memory[1],
         "<var><sup>y</sup></var>√x": Math.pow(memory[1], 1/memory[0]),
     }
-    let result = operations[operation]
+    let result = Math.round((operations[operation] + Number.EPSILON) *10000) / 10000
     console.log("Výsledek: "+ result)
     display(result)
     memory[0]=(result)
