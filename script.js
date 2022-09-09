@@ -8,9 +8,17 @@ let canOperate = false;
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(function (btn){
+    btn.addEventListener("mousedown", ()=>{pushBtn(btn);})
+    btn.addEventListener("mouseup", ()=>{releaseBtn(btn);})
+
+
+
     btn.addEventListener("click", () => {
+        
+        
         //resets CSS styles of operator buttons
         buttons.forEach(function (btn){
+            
             if(btn.getAttribute("class").includes("operator")){
             btn.setAttribute("style", "background-color:rgb(240, 160, 84)")
             }
@@ -115,7 +123,6 @@ function count(){
         "+": memory[0] + memory[1],
         "-": memory[0] - memory[1],
         "x": memory[0] * memory[1],
-        //"/": memory[0] / memory[1],
         "/": memory[0] / memory[1],
         "<var>x<sup>y</sup></var>": memory[0] ** memory[1],
         "<var><sup>y</sup></var>√x": Math.pow(memory[1], 1/memory[0]),
@@ -141,9 +148,17 @@ function display(value){
 
 function tagButton(btn){
     btn.setAttribute("style", "background-color:white")
-    
-
 }
+
+function pushBtn(btn){
+    btn.setAttribute("style","transform:scale(0.9)")
+}
+
+function releaseBtn(btn){
+    btn.setAttribute("style","transform:scale(1)")
+}
+
+
 
 //TODO: 
 // 1. When tapped 2x operation button

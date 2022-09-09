@@ -1,8 +1,20 @@
-main{
+body{
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
     display:flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
+
+
+}
+
+header{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+main{
+    
+    
 }
 
 .calcBody{
@@ -72,8 +84,26 @@ background-color: rgb(245, 42, 42);
     box-sizing: border-box;
 }
 
-
-
 .fiveRow{
     margin-bottom: 30px;
 }
+footer{
+    background-color: rgb(231, 226, 226);
+    width: 100vw;
+    margin-bottom:0;
+    flex-shrink: 0;
+    position:fixed;
+    bottom:0;
+    
+}
+
+footer p{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 0;
+    margin-top:auto;
+    padding-bottom: 15px;
+    padding-top: 15px;
+
+ }
+
